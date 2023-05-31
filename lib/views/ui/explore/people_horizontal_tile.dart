@@ -22,10 +22,11 @@ class PeopleHorizontalTile extends StatelessWidget {
           padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 20.h),
           width: width * 0.7,
           height: height * 0.5,
-          color: secondaryBackgroundColor,
+          color: secondaryBackgroundColor.withOpacity(0.2),
           child: SingleChildScrollView(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
+
               children: [
                 Row(
                   children: [

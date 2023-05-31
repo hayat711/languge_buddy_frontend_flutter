@@ -19,31 +19,32 @@ class CustomTextField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: primaryColor.withOpacity(0.8),
+      color: primaryContainerColor,
       child: Form(
         child: TextFormField(
           keyboardType: keyboardType,
           obscureText: obscureText?? false,
           decoration: InputDecoration(
             border: const OutlineInputBorder(
-              borderRadius: BorderRadius.all(Radius.circular(0)),
+              borderRadius: BorderRadius.all(Radius.circular(10)),
+              borderSide: BorderSide(color: accentColor, width: 0.5),
             ),
             hintText: hintText,
-            hintStyle: appstyle(14, contentColor.withOpacity(0.5), FontWeight.w600),
+            hintStyle: appstyle(14, contentColor.withOpacity(0.7), FontWeight.w600),
             errorBorder: const OutlineInputBorder(
-              borderRadius: BorderRadius.zero,
+              borderRadius: BorderRadius.all(Radius.circular(10)),
               borderSide: BorderSide(color: Colors.red, width: 0.5),
             ),
             focusedErrorBorder: const OutlineInputBorder(
-              borderRadius: BorderRadius.zero,
+              borderRadius: BorderRadius.all(Radius.circular(10)),
               borderSide: BorderSide(color: Colors.red, width: 0.5),
             ),
             disabledBorder:  OutlineInputBorder(
-              borderRadius: BorderRadius.zero,
+              borderRadius: const BorderRadius.all(Radius.circular(10)),
               borderSide: BorderSide(color: backgroundColor.withOpacity(0.7), width: 0.5),
             ),
             enabledBorder: const OutlineInputBorder(
-              borderRadius: BorderRadius.zero,
+              borderRadius: BorderRadius.all(Radius.circular(10)),
               borderSide: BorderSide(color: Colors.transparent, width: 0.5),
             ),
             suffixIcon: suffixIcon,

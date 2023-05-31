@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 
 // Define the modified colors
-const primaryColor = Color(0xFF0C0B0B);
-const secondaryColor = Color(0xFFF3F4F6);
+const primaryColor = Color(0xFF6B97F4);
+const secondaryColor = Color(0xFF353A85);
 const accentColor = Color(0xFFFF2E63);
-const contentColor = Color(0xFFFFFFFF);
-const backgroundColor = Color(0xFF04121E);
-const secondaryBackgroundColor = Color(0xFF232121);
+const contentColor = Color(0xFF151328);
+const backgroundColor = Color(0xFFFFFFFF);
+const secondaryBackgroundColor = Color(0xFDCBC1C1);
+const primaryContainerColor = Color(0xD3FFFFFF);
 
 // Define the color scheme using the modified colors
 const ColorScheme myColorScheme = ColorScheme(

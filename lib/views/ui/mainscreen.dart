@@ -42,8 +42,8 @@ class _MainScreenState extends State<MainScreen> {
           showShadow: true,
           angle: 0.0,
           slideWidth: 250,
-          drawerShadowsBackgroundColor: secondaryBackgroundColor,
-          menuBackgroundColor: backgroundColor,
+          drawerShadowsBackgroundColor: backgroundColor,
+          menuBackgroundColor: Colors.orangeAccent,
         );
     });
   }

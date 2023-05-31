@@ -54,15 +54,18 @@ class LoginNotifier extends ChangeNotifier {
   bool validateAndSave() {
     final form = loginFormKey.currentState;
 
-    if (form!.validate()) {
-      form.save();
-      return true;
-    } else {
-      return false;
-    }
+   if (form != null) {
+     if (form.validate()) {
+       form.save();
+       return true;
+     }
+   }
+   return false;
   }
 
   userLogin(LoginModel model) {
+    print('Email: ${model.email}');
+    print('Password: ${model.password}');
     AuthHelper.login(model).then((response) {
       if (response && isFirstTime) {
         Get.off(() => const LanguageDetails());

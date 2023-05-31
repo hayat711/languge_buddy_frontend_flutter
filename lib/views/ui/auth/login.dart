@@ -131,6 +131,7 @@ class _LoginState extends State<Login> {
 
                         loginNotifier.userLogin(model);
                       } else {
+                        Get.to(() => const MainScreen());
                         Get.snackbar("Login Failed", "Please check your credentials",
                             colorText: contentColor,
                             backgroundColor: Colors.red,

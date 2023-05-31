@@ -26,7 +26,7 @@ void main() async{
   final entrypoint = prefs.getBool('entrypoint')?? false;
   final isLoggedIn = prefs.getBool('isLoggedIn')?? false;
 
-  if(entrypoint & !isLoggedIn){ //TODO confirm if it is & or &&
+  if(entrypoint && !isLoggedIn){ //TODO confirm if it is & or &&
     defaultHome = const Login();
   } else if(entrypoint && isLoggedIn) {
     defaultHome = const MainScreen();

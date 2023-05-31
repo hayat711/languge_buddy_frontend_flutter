@@ -13,7 +13,7 @@ class DrawerWidget extends StatelessWidget {
         ZoomDrawer.of(context)!.toggle();
       },
       child: SvgPicture.asset(
-        'assets/icons/menu2.svg',
+        'assets/icons/menu.svg',
         height: 30.w,
         width: 30.h,
       )

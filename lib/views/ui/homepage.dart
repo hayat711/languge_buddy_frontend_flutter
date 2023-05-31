@@ -12,6 +12,7 @@ import 'package:language_buddy/views/common/height_spacer.dart';
 import 'package:language_buddy/views/ui/explore/search-widget.dart';
 import 'package:language_buddy/views/ui/explore/people_horizontal_tile.dart';
 import 'package:language_buddy/views/ui/explore/search_buddy.dart';
+import 'package:language_buddy/views/ui/user/language_details.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -52,7 +53,7 @@ class _HomePageState extends State<HomePage> {
                 const HeightSpacer(size: 10),
                 Text(
                   "Search",
-                  style: appstyle(28, contentColor, FontWeight.bold),
+                  style: appstyle(24, contentColor, FontWeight.bold),
                 ),
                 const HeightSpacer(size: 20),
 
@@ -85,9 +86,13 @@ class _HomePageState extends State<HomePage> {
                 ),
                 const HeightSpacer(size: 20),
                 //TODO some text to show the recent or new users
-                Container(
-
-                    child: const CustomButton(text: 'Setup your profile and get Started', onTap: null,)),
+                 GestureDetector(
+                   onTap: () {
+                     Get.to(() => const LanguageDetails());
+                   },
+                     child: const CustomButton(text: 'Setup your profile and get Started', onTap: null,),
+                 )
+                ,
               ],
             ),
           ),

@@ -16,10 +16,10 @@ class CustomAppBar extends StatelessWidget {
       iconTheme: const IconThemeData(
         color: secondaryColor,
       ),
-      backgroundColor: primaryColor,
+      backgroundColor: backgroundColor,
       elevation: 0,
       automaticallyImplyLeading: false,
-      leadingWidth: 70.w,
+      leadingWidth: 30.w,
       leading: child,
       actions: actions,
       centerTitle: true,

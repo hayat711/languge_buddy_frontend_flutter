@@ -28,7 +28,7 @@ class _DrawerScreenState extends State<DrawerScreen> {
               ZoomDrawer.of(context)!.toggle();
             },
             child: Scaffold(
-              backgroundColor: backgroundColor,
+              backgroundColor: Colors.orangeAccent,
               body: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -88,7 +88,6 @@ class _DrawerScreenState extends State<DrawerScreen> {
   Widget drawerItem(BuildContext context, IconData icon, String text, int index, Color color) {
     return GestureDetector(
         onTap: () {
-          print('onTap triggered with index ---> $index');
           widget.indexSetter(index);
         },
         child: Container(
