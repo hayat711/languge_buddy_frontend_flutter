@@ -1,57 +1,94 @@
+// To parse this JSON data, do
+//
+//     final signupModel = signupModelFromJson(jsonString);
+
 import 'dart:convert';
 
-ProfileRes profileResFromJson(String str) => ProfileRes.fromJson(json.decode(str));
+SignupModel signupModelFromJson(String str) => SignupModel.fromJson(json.decode(str));
 
-String profileResToJson(ProfileRes data) => json.encode(data.toJson());
+String signupModelToJson(SignupModel data) => json.encode(data.toJson());
 
-class ProfileRes {
-    ProfileRes({
-        required this.id,
-        required this.username,
-        required this.email,
-        required this.isAdmin,
-        required this.isAgent,
-        required this.skills,
-        required this.updatedAt,
-        required this.location,
-        required this.phone,
-        required this.profile,
+class SignupModel {
+    String accessToken;
+    User user;
+
+    SignupModel({
+        required this.accessToken,
+        required this.user,
     });
 
-    final String id;
-    final String username;
-    final String email;
-    final bool isAdmin;
-    final bool isAgent;
-    final List<String> skills;
-    final DateTime updatedAt;
-    final String location;
-    final String phone;
-    final String profile;
-
-    factory ProfileRes.fromJson(Map<String, dynamic> json) => ProfileRes(
-        id: json["_id"],
-        username: json["username"],
-        email: json["email"],
-        isAdmin: json["isAdmin"],
-        isAgent: json["isAgent"],
-        skills: List<String>.from(json["skills"].map((x) => x)),
-        updatedAt: DateTime.parse(json["updatedAt"]),
-        location: json["location"],
-        phone: json["phone"],
-        profile: json["profile"],
+    factory SignupModel.fromJson(Map<String, dynamic> json) => SignupModel(
+        accessToken: json["accessToken"],
+        user: User.fromJson(json["user"]),
     );
 
     Map<String, dynamic> toJson() => {
-        "_id": id,
-        "username": username,
-        "email": email,
-        "isAdmin": isAdmin,
-        "isAgent": isAgent,
-        "skills": List<dynamic>.from(skills.map((x) => x)),
-        "updatedAt": updatedAt.toIso8601String(),
-        "location": location,
-        "phone": phone,
-        "profile": profile,
+        "accessToken": accessToken,
+        "user": user.toJson(),
     };
 }
+
+class User {
+    String accountStatus;
+    dynamic avatarId;
+    DateTime createdAt;
+    String displayName;
+    String email;
+    String firstName;
+    String id;
+    dynamic image;
+    String lastName;
+    String provider;
+    dynamic providerId;
+    String role;
+    DateTime updatedAt;
+
+    User({
+        required this.accountStatus,
+        this.avatarId,
+        required this.createdAt,
+        required this.displayName,
+        required this.email,
+        required this.firstName,
+        required this.id,
+        this.image,
+        required this.lastName,
+        required this.provider,
+        this.providerId,
+        required this.role,
+        required this.updatedAt,
+    });
+
+    factory User.fromJson(Map<String, dynamic> json) => User(
+        accountStatus: json["accountStatus"],
+        avatarId: json["avatarId"],
+        createdAt: DateTime.parse(json["createdAt"]),
+        displayName: json["displayName"],
+        email: json["email"],
+        firstName: json["firstName"],
+        id: json["id"],
+        image: json["image"],
+        lastName: json["lastName"],
+        provider: json["provider"],
+        providerId: json["providerId"],
+        role: json["role"],
+        updatedAt: DateTime.parse(json["updatedAt"]),
+    );
+
+    Map<String, dynamic> toJson() => {
+        "accountStatus": accountStatus,
+        "avatarId": avatarId,
+        "createdAt": createdAt.toIso8601String(),
+        "displayName": displayName,
+        "email": email,
+        "firstName": firstName,
+        "id": id,
+        "image": image,
+        "lastName": lastName,
+        "provider": provider,
+        "providerId": providerId,
+        "role": role,
+        "updatedAt": updatedAt.toIso8601String(),
+    };
+}
+
