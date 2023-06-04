@@ -21,22 +21,24 @@ class SearchWidget extends StatelessWidget {
         children: [
           Row(
             children: [
-              SizedBox(
-                width:width*0.84,
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: [
-                    const Icon(Feather.search, color: accentColor,size: 20),
-                    const WidthSpacer(width: 20),
-                    ReusableText(text: 'Search for a language buddy',
-                    style:appstyle(18, accentColor, FontWeight.w500)),
-                  ],
+              Expanded(
+                child: SizedBox(
+                  width:width*0.84,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+                      const Icon(Feather.search, color: accentColor,size: 20),
+                      const WidthSpacer(width: 20),
+                      ReusableText(text: 'Search for a language buddy',
+                      style:appstyle(18, accentColor, FontWeight.w500)),
+                    ],
+                  ),
                 ),
               ),
               Icon(FontAwesome.sliders, color: accentColor, size: 20.h),
             ],
           ),
-          const HeightSpacer(size: 7),
+          const HeightSpacer(size: 10),
           Divider(
             color: Colors.grey,
             thickness: 0.5,

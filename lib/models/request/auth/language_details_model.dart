@@ -1,18 +1,15 @@
 import 'package:country_code_picker/country_code_picker.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:get/get.dart';
 import 'package:glassmorphism/glassmorphism.dart';
 import 'package:language_buddy/constants/color_scheme.dart';
 import 'package:language_buddy/controllers/exports.dart';
 import 'package:language_buddy/views/common/app_style.dart';
-import 'package:language_buddy/views/common/custom_appbar.dart';
 import 'package:language_buddy/views/common/exports.dart';
 import 'package:language_buddy/views/common/height_spacer.dart';
 import 'package:provider/provider.dart';
 
-import '../../common/custom_textfeild.dart';
+import '../../../views/common/custom_textfeild.dart';
 
 class LanguageDetails extends StatefulWidget {
   const LanguageDetails({Key? key}) : super(key: key);
@@ -38,69 +35,59 @@ class _LanguageDetailsState extends State<LanguageDetails> {
 
   @override
   Widget build(BuildContext context) {
+    final double width = MediaQuery.of(context).size.width;
+    final double height = MediaQuery.of(context).size.height;
+
     return Scaffold(
-      appBar: PreferredSize(preferredSize: const Size.fromHeight(50),
-              child: CustomAppBar(
-                text: 'Details',
-                child:  GestureDetector(
-                  child: const Icon(CupertinoIcons.arrow_left),
-                  onTap: () {
-                    Get.back();
-                  },
-                ),
-              ),
-            ),
       body: Consumer<LoginNotifier>(
         builder: (context, loginNotifier, child) {
           return GlassmorphicContainer(
             width: width,
-          height: height,
-          borderRadius: 0,
-          alignment: Alignment.center,
-          border: 2,
-          linearGradient: LinearGradient(
-            begin: Alignment.topLeft,
-            end: Alignment.bottomRight,
-            colors:  [
-              Color.fromARGB(255, 207, 98, 134).withOpacity(0.4),
-              Color.fromARGB(255, 179, 239, 239).withOpacity(0.4),
-            ],
-            stops: [0.1, 1]
+            height: height,
+            borderRadius: 10,
+            blur: 20,
+            alignment: Alignment.bottomCenter,
+            border: 2,
+            linearGradient: LinearGradient(
+              begin: Alignment.topLeft,
+              end: Alignment.bottomRight,
+              colors: [
+                Color.fromARGB(255, 221, 87, 87).withOpacity(0.1),
+                Color.fromARGB(255, 192, 45, 199).withOpacity(0.05),
+              ],
+              stops: const [
+                0.1,
+                1,
+              ],
             ),
-          borderGradient: LinearGradient(
-            begin: Alignment.topLeft,
-            end: Alignment.bottomRight,
-            colors:  [
-              Colors.pinkAccent.withOpacity(0.2),
-              Colors.cyanAccent.withOpacity(0.2),
-            ],
-          ),
-          blur: 30,
+            borderGradient: LinearGradient(
+              begin: Alignment.topLeft,
+              end: Alignment.bottomRight,
+              colors: [
+                Color.fromARGB(255, 217, 64, 117).withOpacity(0.5),
+                Color.fromARGB(255, 72, 217, 214).withOpacity(0.5),
+              ],
+            ),
             child: ListView(
-              padding: EdgeInsets.symmetric(
-                horizontal: 20.w, vertical: 60.h
-              ),
+              padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 60.h),
               children: [
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    ReusableText(text: 'Language Details',
-                     style: appstyle(28, contentColor, FontWeight.bold),
+                    ReusableText(
+                      text: 'Language Details',
+                      style: appstyle(28, contentColor, FontWeight.bold),
                     ),
-          
                     GestureDetector(
                       onTap: null,
                       child: const CircleAvatar(
-                        backgroundImage: AssetImage('assets/images/profile.png'),
+                        // backgroundImage: AssetImage('assets/images/profile.png'),
                       ),
                     ),
-          
                   ],
                 ),
-          
                 const HeightSpacer(size: 20),
-          
-              //  TODO FORM
+                //  TODO FORM
                 Form(
                   child: Column(
                     children: [
@@ -109,50 +96,45 @@ class _LanguageDetailsState extends State<LanguageDetails> {
                         hintText: 'Language Name',
                         keyboardType: TextInputType.name,
                         validator: (value) {
-                          if(value!.isEmpty) {
+                          if (value!.isEmpty) {
                             return 'Please enter language name';
                           }
                           return null;
                         },
                       ),
-          
                       const HeightSpacer(size: 20),
-          
-                    
                       Column(
                         children: [
                           Text(
                             'Is your native language?',
                             style: appstyle(18, contentColor, FontWeight.w500),
                           ),
-                          Column(
-                            children:<Widget> [
-                              ListTile(
-                                title: const Text('Yes'),
-                                leading: Radio(
+                          Row(
+                            children: <Widget>[
+                              Expanded(
+                                child: RadioListTile<bool>(
+                                  title: const Text('Yes'),
                                   value: true,
                                   groupValue: loginNotifier.isNative,
                                   onChanged: (value) {
-                                    loginNotifier.isNative = value as bool;
+                                    loginNotifier.isNative = value!;
                                   },
                                 ),
-                              
                               ),
-                              ListTile(
-                                title: const Text('No'),
-                                leading: Radio(
+                              Expanded(
+                                child: RadioListTile<bool>(
+                                  title: const Text('No'),
                                   value: false,
                                   groupValue: loginNotifier.isNative,
                                   onChanged: (value) {
-                                    loginNotifier.isNative = value as bool;
+                                    loginNotifier.isNative = value!;
                                   },
                                 ),
-                              )
+                              ),
                             ],
                           ),
                         ],
                       ),
-                     
                       const HeightSpacer(size: 20),
                       Column(
                         children: [
@@ -165,7 +147,12 @@ class _LanguageDetailsState extends State<LanguageDetails> {
                             onChanged: (newValue) {
                               loginNotifier.level = newValue!;
                             },
-                            items: <String>['Beginner', 'Intermediate', 'Advanced', 'Expert'].map((String value) {
+                            items: <String>[
+                              'Beginner',
+                              'Intermediate',
+                              'Advanced',
+                              'Expert'
+                            ].map((String value) {
                               return DropdownMenuItem<String>(
                                 value: value,
                                 child: Text(value),
@@ -174,17 +161,14 @@ class _LanguageDetailsState extends State<LanguageDetails> {
                           ),
                         ],
                       ),
-                     
-          
                       const HeightSpacer(size: 20),
-                      
                       Column(
-                        children: [ 
-                             Text(
-                              'Select your location',
-                              style: appstyle(18, contentColor, FontWeight.w500),
-                             ),
-                            const CountryCodePicker(
+                        children: [
+                          Text(
+                            'Select your location',
+                            style: appstyle(18, contentColor, FontWeight.w500),
+                          ),
+                          const CountryCodePicker(
                             onChanged: print,
                             // Initial selection and favorite can be one of code ('IT') OR dial_code('+39')
                             initialSelection: 'KR',
@@ -199,19 +183,13 @@ class _LanguageDetailsState extends State<LanguageDetails> {
                         ],
                       ),
                       const HeightSpacer(size: 20),
-          
-          
-          
-          
-          
                     ],
                   ),
                 )
-          
               ],
             ),
           );
-        }
+        },
       ),
     );
   }

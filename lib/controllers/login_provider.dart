@@ -41,6 +41,21 @@ class LoginNotifier extends ChangeNotifier {
     notifyListeners();
   }
 
+  bool _isNative = true;
+  bool get isNative => _isNative;
+
+  set isNative(bool newValue) {
+    _isNative = newValue;
+    notifyListeners();
+  }
+
+  String _level = 'Intermediate';
+  String get level => _level;
+  
+  set level(String newLevel) {
+    _level = newLevel;
+    notifyListeners();
+  }
 
   getPrefs() async {
     final SharedPreferences prefs = await SharedPreferences.getInstance();

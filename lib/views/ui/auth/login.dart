@@ -8,11 +8,9 @@ import 'package:language_buddy/views/common/custom_btn.dart';
 import 'package:language_buddy/views/common/custom_textfeild.dart';
 import 'package:language_buddy/views/common/exports.dart';
 import 'package:language_buddy/views/common/height_spacer.dart';
-import 'package:language_buddy/views/common/reusable_text.dart';
 import 'package:language_buddy/views/ui/auth/register.dart';
 import 'package:language_buddy/views/ui/mainscreen.dart';
 import 'package:provider/provider.dart';
-
 import '../../../constants/color_scheme.dart';
 import '../../../controllers/login_provider.dart';
 

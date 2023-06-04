@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:language_buddy/controllers/chat_provider.dart';
 import 'package:language_buddy/views/ui/auth/login.dart';
 import 'package:language_buddy/views/ui/homepage.dart';
 import 'package:language_buddy/views/ui/mainscreen.dart';
@@ -39,6 +40,7 @@ void main() async{
             ChangeNotifierProvider(create: (context) => LoginNotifier()),
             ChangeNotifierProvider(create: (context) => SignUpNotifier()),
             ChangeNotifierProvider(create: (context) => ZoomNotifier()),
+            ChangeNotifierProvider(create: (context) => ChatNotifier())
 
 
           ],
@@ -71,10 +73,3 @@ class MyApp extends StatelessWidget {
 
 
 
-/*
- theme: ThemeData(
-            scaffoldBackgroundColor: Colors.pink[400],
-            iconTheme: const IconThemeData(color: Colors.black),
-            primarySwatch: Colors.cyan,
-          ),
-* */
