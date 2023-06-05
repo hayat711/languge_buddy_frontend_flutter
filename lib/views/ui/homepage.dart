@@ -12,7 +12,6 @@ import 'package:language_buddy/views/common/height_spacer.dart';
 import 'package:language_buddy/views/ui/explore/search-widget.dart';
 import 'package:language_buddy/views/ui/explore/people_horizontal_tile.dart';
 import 'package:language_buddy/views/ui/explore/search_buddy.dart';
-import 'package:language_buddy/views/ui/user/buddy_profile.dart';
 import 'package:language_buddy/views/ui/user/language_buddy_profile.dart';
 import 'package:language_buddy/views/ui/user/language_details.dart';
 

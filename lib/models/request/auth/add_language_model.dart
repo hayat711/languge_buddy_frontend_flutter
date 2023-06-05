@@ -8,11 +8,13 @@ class AddLanguageModel {
   String name;
   String level;
   bool isNative;
+  String location;
 
     AddLanguageModel({
         required this.name,
         required this.level,
         required this.isNative,
+        required this.location,
     });
 
 
@@ -21,6 +23,7 @@ class AddLanguageModel {
         name: json["name"],
         level: json["level"],
         isNative: json["isNative"],
+        location: json["location"],
 
     );
 
@@ -28,5 +31,6 @@ class AddLanguageModel {
         "name": name,
          "level": level,
         "isNative": isNative,
+        "location": location,
     };
 }
