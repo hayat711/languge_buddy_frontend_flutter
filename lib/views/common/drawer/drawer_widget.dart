@@ -15,8 +15,8 @@ class DrawerWidget extends StatelessWidget {
       },
       child: SvgPicture.asset(
         'assets/icons/menu.svg',
-        height: 40.w,
-        width: 40.h,
+        height: 60.w,
+        width: 60.h,
         color: accentColor,
       )
     );

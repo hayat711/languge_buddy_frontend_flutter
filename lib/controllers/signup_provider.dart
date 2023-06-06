@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:language_buddy/models/request/auth/login_model.dart';
+import 'package:language_buddy/models/request/auth/signup_model.dart';
 import 'package:language_buddy/services/helpers/auth_helper.dart';
 import 'package:language_buddy/views/ui/mainscreen.dart';
 
@@ -27,7 +28,7 @@ class SignUpNotifier extends ChangeNotifier {
   }
 
   // triggered when the first time when user login to prompted to the update profile page
-  bool _firstTime = false;
+  bool _firstTime = true;
   bool get firstTime => _firstTime;
 
   set firstTime(bool newState) {
@@ -58,6 +59,14 @@ class SignUpNotifier extends ChangeNotifier {
     return false;
   }
 
+  userSignUp(SignupModel model) {
+    print('firstName --> ${model.firstName}');
+    print('lastName --> ${model.lastName}');
+    print('email --> ${model.email}');
+    print('password --> ${model.password}');
+    print('username --> ${model.displayName}');
 
+
+  }
 
 }

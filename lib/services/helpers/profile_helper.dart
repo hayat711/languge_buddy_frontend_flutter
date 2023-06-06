@@ -15,7 +15,7 @@ class LanguageHelper {
       'Accept': 'application/json',
     };
 
-    var url = Uri.https(Config.apiUrl, Config.addLangauage);
+    var url = Uri.http(Config.apiUrl, Config.addLangauage);
     var response = await client.post(
       url,
       headers: requestHeaders,

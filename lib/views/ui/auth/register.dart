@@ -5,6 +5,7 @@ import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:language_buddy/constants/color_scheme.dart';
 import 'package:language_buddy/controllers/signup_provider.dart';
+import 'package:language_buddy/models/request/auth/signup_model.dart';
 import 'package:language_buddy/views/common/custom_btn.dart';
 import 'package:language_buddy/views/common/custom_textfeild.dart';
 import 'package:language_buddy/views/common/exports.dart';
@@ -59,21 +60,21 @@ class _RegisterState extends State<Register> {
               ),
             ),
             body: Padding(
-              padding: EdgeInsets.symmetric(horizontal: 20.w),
+              padding: EdgeInsets.symmetric(horizontal: 30.w),
               child: ListView(
                 padding: EdgeInsets.zero,
                 children:  [
                   const HeightSpacer(size: 10),
-                  const ReusableText(text: "Hello, Welcome!", style: TextStyle(
-                    fontSize: 30,
+                  const ReusableText(text: "Hello 👋 Welcome!", style: TextStyle(
+                    fontSize: 28,
                     fontWeight: FontWeight.w600,
-                    color: Colors.cyan,
+                    color: accentColor,
                   ),
                   ),
                   const ReusableText(text: "Fill the details to register!", style: TextStyle(
                     fontSize: 16,
-                    fontWeight: FontWeight.w600,
-                    color: Colors.orange,
+                    fontWeight: FontWeight.w400,
+                    color: primaryColor,
                   ),
                   ),
                   const HeightSpacer(size: 50),
@@ -173,6 +174,16 @@ class _RegisterState extends State<Register> {
                   CustomButton(
                     onTap: (){
                       loginNotifier.isFirstTime = !loginNotifier.isFirstTime;
+                      if (signUpNotifier.validateAndSave()) {
+                        SignupModel model = SignupModel(
+                            firstName: firstName.text,
+                            lastName: lastName.text,
+                            displayName: displayName.text,
+                            email: email.text,
+                            password: password.text
+                        );
+                        signUpNotifier.signUp(model);
+                      }
                     },
                     text: 'Register',
 

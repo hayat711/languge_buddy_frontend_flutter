@@ -102,7 +102,7 @@ class _ChatListState extends State<ChatList> {
             // Display the conversations
             for (var conversation in conversations)
               ListTile(
-                title: Text('Conversation Name'),
+                title: const Text('Conversation Name'),
                 onTap: () {
                   // Set the active conversation
                   if (conversation != null) {
@@ -121,7 +121,7 @@ class _ChatListState extends State<ChatList> {
 
             for (var room in rooms)
               ListTile(
-                title: Text('Room Name'),
+                title: const Text('Room Name'),
                 onTap: () {
                   // Set the active room
                   if (room != null) {

@@ -7,7 +7,7 @@ const accentColor = Color(0xFFFF2E63);
 const contentColor = Color(0xFF151328);
 const backgroundColor = Color(0xFFFFFFFF);
 const secondaryBackgroundColor = Color(0xFDCBC1C1);
-const primaryContainerColor = Color(0xD3FFFFFF);
+const primaryContainerColor = Color(0xD3F6F0F0);
 
 // Define the color scheme using the modified colors
 const ColorScheme myColorScheme = ColorScheme(

@@ -19,7 +19,18 @@ class CustomTextField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: primaryContainerColor,
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(10),
+        color: primaryContainerColor,
+        boxShadow: [
+          BoxShadow(
+            color: Colors.black.withOpacity(0.1),
+            spreadRadius: 1,
+            blurRadius: 5,
+            offset: const Offset(0, 3), // changes position of shadow
+          ),
+        ],
+      ),
       child: Form(
         child: TextFormField(
           keyboardType: keyboardType,
@@ -28,6 +39,10 @@ class CustomTextField extends StatelessWidget {
             border: const OutlineInputBorder(
               borderRadius: BorderRadius.all(Radius.circular(10)),
               borderSide: BorderSide(color: accentColor, width: 0.5),
+            ),
+            focusedBorder:const  OutlineInputBorder(
+              borderRadius:  BorderRadius.all(Radius.circular(10)),
+              borderSide: BorderSide(color: Colors.transparent, width: 0.5),
             ),
             hintText: hintText,
             hintStyle: appstyle(14, contentColor.withOpacity(0.7), FontWeight.w600),

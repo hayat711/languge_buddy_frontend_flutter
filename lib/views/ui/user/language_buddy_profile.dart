@@ -35,7 +35,7 @@ class _LanguageBuddyProfileState extends State<LanguageBuddyProfile> {
                 height: MediaQuery.of(context).size.height * 0.9,
                 child: Center(
                   child: Image.asset(
-                    'assets/images/avatar4.jpg',
+                    'assets/images/avatar3.jpg',
                     fit: BoxFit.cover,
                     width: double.infinity,
                     height: double.infinity,
