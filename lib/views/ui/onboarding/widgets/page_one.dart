@@ -21,34 +21,35 @@ class PageOne extends StatelessWidget {
               fit: BoxFit.cover, // Take full width and maintain aspect ratio
             ),
           ),
-          Align(
-            alignment: Alignment.bottomCenter,
-            child: Container(
-              margin: const EdgeInsets.all(20),
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
-                children:  [
-                  ReusableText(
-                    text: 'Welcome to Language Buddy!',
-                    style: appstyle(24, contentColor, FontWeight.bold),
-                  ),
-                  const HeightSpacer(size: 10),
-                  const Padding(
-                    padding: EdgeInsets.symmetric(vertical: 30.0),
-                    child: Text(
-                      "",
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                        fontSize: 15,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.green,
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-            ),
-          ),
+          // Align(
+          //   alignment: Alignment.bottomCenter,
+          //   child: Container(
+          //     margin: const EdgeInsets.all(20),
+          //     child: Column(
+          //       mainAxisSize: MainAxisSize.min,
+          //       children:  [
+          //         ReusableText(
+          //           text: 'Welcome to Language Buddy!',
+          //           style: appstyle(24, contentColor, FontWeight.bold),
+          //         ),
+          //         const HeightSpacer(size: 10),
+          //         const Padding(
+          //           padding: EdgeInsets.symmetric(vertical: 30.0),
+          //           child: Text(
+          //             "",
+          //             textAlign: TextAlign.center,
+          //             style: TextStyle(
+          //               fontSize: 15,
+          //               fontWeight: FontWeight.bold,
+          //               color: Colors.green,
+          //             ),
+          //           ),
+          //         ),
+          //       ],
+          //     ),
+          //   ),
+          // ),
+          //
         ],
       ),
     );

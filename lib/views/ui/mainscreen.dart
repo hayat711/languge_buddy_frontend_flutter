@@ -9,6 +9,7 @@ import 'package:language_buddy/views/common/drawer/drawer_screen.dart';
 import 'package:language_buddy/views/common/exports.dart';
 import 'package:language_buddy/views/common/width_spacer.dart';
 import 'package:language_buddy/views/ui/chat/chat_list.dart';
+import 'package:language_buddy/views/ui/demo-chat/demo_chat_list.dart';
 import 'package:language_buddy/views/ui/user/profile.dart';
 import 'package:language_buddy/views/ui/chat/chat.dart';
 import 'package:language_buddy/views/ui/explore/explore.dart';
@@ -34,35 +35,35 @@ class _MainScreenState extends State<MainScreen> {
   Widget build(BuildContext context) {
     return Consumer<ZoomNotifier>
       (builder: (context, zoomNotifier, child) {
-        return GlassmorphicContainer(
-          width: width,
-          height: height,
-          borderRadius: 0,
-          alignment: Alignment.center,
-          border: 2,
-          linearGradient: LinearGradient(
-            begin: Alignment.topLeft,
-            end: Alignment.bottomRight,
-            colors:  [
-              const Color.fromARGB(255, 221, 40, 100).withOpacity(0.4),
-              const Color.fromARGB(255, 39, 70, 70).withOpacity(0.4),
-            ],
-            stops: const [0.1, 1]
-            ),
-          borderGradient: LinearGradient(
-            begin: Alignment.topLeft,
-            end: Alignment.bottomRight,
-            colors:  [
-              Colors.pinkAccent.withOpacity(0.2),
-              Colors.cyanAccent.withOpacity(0.2),
-            ],
-          ),
-          blur: 60,
+        return Container(
+          // width: width,
+          // height: height,
+          // borderRadius: 0,
+          // alignment: Alignment.center,
+          // border: 2,
+          // linearGradient: LinearGradient(
+          //   begin: Alignment.topLeft,
+          //   end: Alignment.bottomRight,
+          //   colors:  [
+          //     const Color.fromARGB(255, 221, 40, 100).withOpacity(0.4),
+          //     const Color.fromARGB(255, 39, 70, 70).withOpacity(0.4),
+          //   ],
+          //   stops: const [0.1, 1]
+          //   ),
+          // borderGradient: LinearGradient(
+          //   begin: Alignment.topLeft,
+          //   end: Alignment.bottomRight,
+          //   colors:  [
+          //     Colors.pinkAccent.withOpacity(0.2),
+          //     Colors.cyanAccent.withOpacity(0.2),
+          //   ],
+          // ),
+          // blur: 60,
           child: Stack(
 
             children: [
-                // backgroun image
-                Image.asset('assets/images/bg.jpg',
+                // background image
+                Image.asset('assets/images/glass.png',
                   fit: BoxFit.cover,
                   width: double.infinity,
                   height: double.infinity,
@@ -70,9 +71,9 @@ class _MainScreenState extends State<MainScreen> {
 
                 // backdrop filter
                 BackdropFilter(
-                  filter: ImageFilter.blur(sigmaX: 60, sigmaY: 60),
+                  filter: ImageFilter.blur(sigmaX: 5, sigmaY: 5),
                   child: Container(
-                    color: Colors.black.withOpacity(0.1),
+                    color: Colors.white.withOpacity(0.2),
                     width: double.infinity,
                     height: double.infinity,
                   ),
@@ -108,7 +109,7 @@ class _MainScreenState extends State<MainScreen> {
       case 2:
         return const Explore();
       case 3:
-       return const HomePage();
+       return const ChatListDemo();
       case 4:
         return const Profile();
       default:

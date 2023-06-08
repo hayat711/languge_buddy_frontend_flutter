@@ -7,7 +7,13 @@ import '../../constants/color_scheme.dart';
 
 
 class CustomTextField extends StatelessWidget {
-  const CustomTextField({Key? key, required this.controller, required this.hintText, required this.keyboardType, this.validator, this.suffixIcon, this.obscureText}) : super(key: key);
+  const CustomTextField({
+    Key? key, required this.controller,
+    required this.hintText, required this.keyboardType,
+    required this.validator, this.suffixIcon,
+    this.obscureText,
+    this.formKey,
+  }) : super(key: key);
 
   final TextEditingController controller;
   final String hintText;
@@ -15,6 +21,7 @@ class CustomTextField extends StatelessWidget {
   final String? Function(String?)? validator;
   final Widget? suffixIcon;
   final bool? obscureText;
+  final GlobalKey<FormState>? formKey;
 
   @override
   Widget build(BuildContext context) {
@@ -32,6 +39,7 @@ class CustomTextField extends StatelessWidget {
         ],
       ),
       child: Form(
+        key: formKey,
         child: TextFormField(
           keyboardType: keyboardType,
           obscureText: obscureText?? false,

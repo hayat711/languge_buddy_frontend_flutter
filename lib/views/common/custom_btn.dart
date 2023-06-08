@@ -21,7 +21,7 @@ class CustomButton extends StatelessWidget {
         height: height * 0.08,
         child:Center(
           child: ReusableText(text: text,
-          style: appstyle(16, color?? Colors.white, FontWeight.w600)
+          style: appstyle(24, color?? Colors.white, FontWeight.w700)
           )
         )
       )

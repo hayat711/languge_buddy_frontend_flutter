@@ -81,16 +81,21 @@ dev_dependencies:
 # The following section is specific to Flutter packages.
 flutter:
   assets:
-    - assets/images/page_one.jpg
-    - assets/images/page_two.jpg
-    - assets/images/page_three.jpg
     - assets/images/bg.jpg
     - assets/images/bg2.jpg
     - assets/images/avatar4.jpg
+    - assets/images/avatar5.jpg
     - assets/images/avatar3.jpg
+    - assets/images/glass.png
+    - assets/images/avatar2.jpg
+    - assets/images/avatar1.jpg
+    - assets/images/avatar0.jpg
+    - assets/images/BG.png
+    - assets/images/BG-2.png
 
 
     - assets/images/page1.png
+    - assets/images/page3.png
     - assets/images/page2.png
     - assets/images/grad.jpeg
     - assets/icons/menu.svg

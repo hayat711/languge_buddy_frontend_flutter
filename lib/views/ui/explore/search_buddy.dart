@@ -31,6 +31,12 @@ class _SearchBuddyState extends State<SearchBuddy> {
           ),
           controller: search,
           keyboardType: TextInputType.text,
+          validator: (value) {
+            if (value!.isEmpty) {
+              return 'Please enter a valid email';
+            }
+            return null;
+          },
         ),
         elevation: 0,
       ),

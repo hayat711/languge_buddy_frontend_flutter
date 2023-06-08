@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:language_buddy/models/request/auth/login_model.dart';
 import 'package:language_buddy/services/helpers/auth_helper.dart';
+import 'package:logger/logger.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../constants/color_scheme.dart';
@@ -65,10 +66,13 @@ class LoginNotifier extends ChangeNotifier {
   }
 
   final loginFormKey = GlobalKey<FormState>();
+  var logger = Logger();
 
   bool validateAndSave() {
-    final form = loginFormKey.currentState;
+    logger.d('validateAndSave called login');
 
+    final form = loginFormKey.currentState;
+    logger.i('form --> $form');
    if (form != null) {
      if (form.validate()) {
        form.save();

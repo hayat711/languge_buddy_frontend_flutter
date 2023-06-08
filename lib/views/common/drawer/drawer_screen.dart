@@ -40,7 +40,7 @@ class _DrawerScreenState extends State<DrawerScreen> {
                       AntDesign.home,
                       'Home', 0,
                       zoomNotifier.currentIndex == 0
-                        ? Colors.white : Colors.white.withOpacity(0.7),
+                        ? accentColor : Colors.white.withOpacity(0.8),
                     ),
                     drawerItem(
                       context,
@@ -48,7 +48,7 @@ class _DrawerScreenState extends State<DrawerScreen> {
                       'Chat',
                       1,
                       zoomNotifier.currentIndex == 1
-                          ? Colors.white : Colors.white.withOpacity(0.7),
+                          ? accentColor : Colors.white.withOpacity(0.8),
                     ),
                     drawerItem(
                       context,
@@ -56,7 +56,7 @@ class _DrawerScreenState extends State<DrawerScreen> {
                       'Explore',
                       2,
                       zoomNotifier.currentIndex == 2
-                          ? Colors.white : Colors.white.withOpacity(0.7),
+                          ? accentColor : Colors.white.withOpacity(0.8),
                     ),
                     drawerItem(
                       context,
@@ -64,7 +64,7 @@ class _DrawerScreenState extends State<DrawerScreen> {
                       'Notifications',
                       3,
                       zoomNotifier.currentIndex == 3
-                          ? Colors.white : Colors.white.withOpacity(0.7),
+                          ? accentColor : Colors.white.withOpacity(0.8),
           
           
                     ),
@@ -74,7 +74,7 @@ class _DrawerScreenState extends State<DrawerScreen> {
                       'Profile',
                       4,
                       zoomNotifier.currentIndex == 4
-                          ? Colors.white : Colors.white.withOpacity(0.7),
+                          ? accentColor : Colors.white.withOpacity(0.8),
           
           
                     )
@@ -104,9 +104,10 @@ class _DrawerScreenState extends State<DrawerScreen> {
               ),
               const WidthSpacer(width: 12),
               ReusableText(text: text, style: appstyle(13, color, FontWeight.bold)),
-              // SizedBox(
-              //   width: 20.w,
-              // ),
+              SizedBox(
+                width: 20.w,
+
+              ),
 
             ],
           ),

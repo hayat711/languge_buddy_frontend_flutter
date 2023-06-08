@@ -1,8 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:provider/provider.dart';
 import 'package:language_buddy/constants/color_scheme.dart';
 import 'package:language_buddy/controllers/signup_provider.dart';
 import 'package:language_buddy/models/request/auth/signup_model.dart';
@@ -11,10 +11,10 @@ import 'package:language_buddy/views/common/custom_textfeild.dart';
 import 'package:language_buddy/views/common/exports.dart';
 import 'package:language_buddy/views/common/height_spacer.dart';
 import 'package:language_buddy/views/ui/auth/login.dart';
-import 'package:provider/provider.dart';
-
+import 'package:logger/logger.dart';
 import '../../../controllers/login_provider.dart';
 import '../../common/custom_appbar.dart';
+
 
 class Register extends StatefulWidget {
   const Register({Key? key}) : super(key: key);
@@ -29,6 +29,8 @@ class _RegisterState extends State<Register> {
   final TextEditingController displayName = TextEditingController();
   final TextEditingController email = TextEditingController();
   final TextEditingController password = TextEditingController();
+
+  var logger = Logger();
 
   @override
   void dispose() {
@@ -89,6 +91,7 @@ class _RegisterState extends State<Register> {
                         return null;
                       }
                     },
+
                   ),
                   const HeightSpacer(size: 20),
                   CustomTextField(
@@ -102,6 +105,7 @@ class _RegisterState extends State<Register> {
                         return null;
                       }
                     },
+
                   ),
                   const HeightSpacer(size: 20),
                   CustomTextField(
@@ -173,16 +177,30 @@ class _RegisterState extends State<Register> {
                   const HeightSpacer(size: 20),
                   CustomButton(
                     onTap: (){
-                      loginNotifier.isFirstTime = !loginNotifier.isFirstTime;
-                      if (signUpNotifier.validateAndSave()) {
+                      logger.d('on tap pressed in register');
+                      // loginNotifier.isFirstTime = !loginNotifier.isFirstTime;
+                      if (
+                      // signUpNotifier.validateAndSave()
+                      true
+                      ) {
+                        logger.i('i am called');
                         SignupModel model = SignupModel(
-                            firstName: firstName.text,
-                            lastName: lastName.text,
-                            displayName: displayName.text,
+                            firstName: firstName.text ,
+                            lastName: lastName.text ,
+                            displayName: displayName.text ,
                             email: email.text,
-                            password: password.text
+                            password: password.text ,
                         );
-                        signUpNotifier.signUp(model);
+                        signUpNotifier.userSignUp(model);
+                        logger.i('sign up model is $firstName');
+                      } else {
+                        Get.snackbar("Register Failed",
+                        "Please fill all the fields correctly & try again",
+                        backgroundColor: Colors.red,
+                        colorText: Colors.white,
+                        snackPosition: SnackPosition.BOTTOM,
+                          icon: const Icon(Icons.error_outline_sharp, color: Colors.white,),
+                        );
                       }
                     },
                     text: 'Register',

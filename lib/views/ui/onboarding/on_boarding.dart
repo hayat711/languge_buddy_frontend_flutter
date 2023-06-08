@@ -61,9 +61,9 @@ class _OnBoardingState extends State<OnBoarding> {
                         effect: const ExpandingDotsEffect(
                           activeDotColor: Colors.pink,
                           dotColor: secondaryColor,
-                          dotHeight: 8,
-                          dotWidth: 12,
-                          spacing: 8,
+                          dotHeight: 4,
+                          dotWidth: 8,
+                          spacing: 4,
                         ),
                       ),
                     )

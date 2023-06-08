@@ -4,6 +4,7 @@ import 'package:language_buddy/models/request/auth/login_model.dart';
 import 'package:language_buddy/models/request/auth/signup_model.dart';
 import 'package:language_buddy/services/helpers/auth_helper.dart';
 import 'package:language_buddy/views/ui/mainscreen.dart';
+import 'package:logger/logger.dart';
 
 import '../constants/color_scheme.dart';
 import '../views/ui/user/language_details.dart';
@@ -37,9 +38,9 @@ class SignUpNotifier extends ChangeNotifier {
   }
 
 
+  var logger = Logger();
 
-
-  final signupFormKey = GlobalKey<FormState>();
+  final GlobalKey<FormState> signupFormKey = GlobalKey<FormState>();
 
   bool passwordValidator(String password) {
     if (password.isEmpty) {
@@ -51,22 +52,46 @@ class SignUpNotifier extends ChangeNotifier {
   }
 
   bool validateAndSave() {
+    logger.d('validateAndSave called');
     final form = signupFormKey.currentState;
-    if (form!.validate()) {
-      form.save();
-      return true;
+    logger.i('form --> $form');
+    if (form != null ){
+      if (form.validate()) {
+        form.save();
+        return true;
+      }
     }
+
     return false;
   }
 
   userSignUp(SignupModel model) {
-    print('firstName --> ${model.firstName}');
-    print('lastName --> ${model.lastName}');
-    print('email --> ${model.email}');
-    print('password --> ${model.password}');
-    print('username --> ${model.displayName}');
+    logger.d('firstName --> ${model.firstName}');
+    logger.d('lastName --> ${model.lastName}');
+    logger.i('email --> ${model.email}');
+    logger.wtf('password --> ${model.password}');
+    logger.i('username --> ${model.displayName}');
 
-
+    AuthHelper.signup(model).then((response) {
+      if (response) {
+        logger.d('response --> $response');
+        logger.i('Successfully registered');
+        Get.snackbar("Register Success", "Welcome to Language Buddy",
+            backgroundColor: Colors.green,
+            colorText: Colors.white,
+            snackPosition: SnackPosition.BOTTOM,
+            icon: const Icon(Icons.check_circle_outline_outlined, color: accentColor,)
+        );
+        Get.off(() => const MainScreen());  //TODO check to go to home page or language details
+      } else if (!response ) {
+        Get.snackbar("Register Failed", "Please try again",
+            backgroundColor: Colors.red,
+            colorText: Colors.white,
+            snackPosition: SnackPosition.BOTTOM,
+            icon: const Icon(Icons.error_outline_outlined)
+        );
+      }
+    });
   }
 
 }
