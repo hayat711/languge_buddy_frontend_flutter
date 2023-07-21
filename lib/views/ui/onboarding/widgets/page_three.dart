@@ -23,10 +23,9 @@ class PageThree extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
+              Image.asset('assets/images/page3.png'),
               const HeightSpacer(size: 10),
-              Image.asset('assets/images/page_three.jpg'),
-              const HeightSpacer(size: 10),
-               ReusableText(text: "Welcome to Language Buddy!",
+               ReusableText(text: "Get started & make new connections!",
                     style: appstyle(24, contentColor, FontWeight.bold),
               ),
               const HeightSpacer(size: 10),
@@ -47,8 +46,8 @@ class PageThree extends StatelessWidget {
                       text: "Login",
                       width: 140,
                       height: 50,
-                      color: contentColor,
-                      color2: secondaryColor,
+                      color: primaryColor,
+                      color2: primaryColor,
                     ),
                     GestureDetector(
                       onTap: () {
@@ -60,7 +59,7 @@ class PageThree extends StatelessWidget {
                         color: accentColor,
                         child:  Center(
                           child: ReusableText(text: "Sign Up",
-                          style: appstyle(19, secondaryColor, FontWeight.bold),
+                          style: appstyle(19, Colors.white, FontWeight.bold),
                           ),
                         ),
                       ),

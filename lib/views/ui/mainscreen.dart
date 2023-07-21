@@ -29,75 +29,54 @@ class MainScreen extends StatefulWidget {
 
 class _MainScreenState extends State<MainScreen> {
 
-  
-  
+
+
   @override
   Widget build(BuildContext context) {
-    return Consumer<ZoomNotifier>
-      (builder: (context, zoomNotifier, child) {
-        return Container(
-          // width: width,
-          // height: height,
-          // borderRadius: 0,
-          // alignment: Alignment.center,
-          // border: 2,
-          // linearGradient: LinearGradient(
-          //   begin: Alignment.topLeft,
-          //   end: Alignment.bottomRight,
-          //   colors:  [
-          //     const Color.fromARGB(255, 221, 40, 100).withOpacity(0.4),
-          //     const Color.fromARGB(255, 39, 70, 70).withOpacity(0.4),
-          //   ],
-          //   stops: const [0.1, 1]
-          //   ),
-          // borderGradient: LinearGradient(
-          //   begin: Alignment.topLeft,
-          //   end: Alignment.bottomRight,
-          //   colors:  [
-          //     Colors.pinkAccent.withOpacity(0.2),
-          //     Colors.cyanAccent.withOpacity(0.2),
-          //   ],
-          // ),
-          // blur: 60,
-          child: Stack(
-
-            children: [
-                // background image
-                Image.asset('assets/images/glass.png',
-                  fit: BoxFit.cover,
-                  width: double.infinity,
-                  height: double.infinity,
-                ),
-
-                // backdrop filter
+    return Consumer<ZoomNotifier>(
+      builder: (context, zoomNotifier, child) {
+        return Scaffold(
+          body: Container(
+            width: double.infinity,
+            height: double.infinity,
+            decoration: const BoxDecoration(
+              image: DecorationImage(
+                image: AssetImage('assets/images/bg.jpeg'),
+                fit: BoxFit.cover,
+              ),
+            ),
+            child: Stack(
+              children: [
                 BackdropFilter(
-                  filter: ImageFilter.blur(sigmaX: 5, sigmaY: 5),
+                  filter: ImageFilter.blur(sigmaX: 0, sigmaY: 0),
                   child: Container(
-                    color: Colors.white.withOpacity(0.2),
+                    color: Colors.black.withOpacity(0.2),
                     width: double.infinity,
                     height: double.infinity,
                   ),
                 ),
-                
                 ZoomDrawer(
-                menuScreen: DrawerScreen(
+                  menuScreen: DrawerScreen(
                     indexSetter: (index) {
                       zoomNotifier.currentIndex = index;
-                    }
+                    },
+                  ),
+                  mainScreen: currentScreen(),
+                  borderRadius: 30.0,
+                  showShadow: true,
+                  angle: 0.0,
+                  slideWidth: 250,
+                  drawerShadowsBackgroundColor: backgroundColor,
+                  menuBackgroundColor: Colors.transparent,
                 ),
-                mainScreen: currentScreen(),
-                borderRadius: 30.0,
-                showShadow: true,
-                angle: 0.0,
-                slideWidth: 250,
-                drawerShadowsBackgroundColor: backgroundColor,
-                menuBackgroundColor: Colors.transparent,
-              ),
-            ],
+              ],
+            ),
           ),
         );
-    });
+      },
+    );
   }
+
   Widget currentScreen () {
     var zoomNotifier = Provider.of<ZoomNotifier>(context);
 

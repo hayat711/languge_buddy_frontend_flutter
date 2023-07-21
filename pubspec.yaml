@@ -92,6 +92,8 @@ flutter:
     - assets/images/avatar0.jpg
     - assets/images/BG.png
     - assets/images/BG-2.png
+    - assets/images/bg.jpeg
+    - assets/images/bg-2.jpeg
 
 
     - assets/images/page1.png

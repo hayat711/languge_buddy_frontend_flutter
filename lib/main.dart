@@ -25,11 +25,12 @@ void main() async{
   final entrypoint = prefs.getBool('entrypoint')?? false;
   final isLoggedIn = prefs.getBool('isLoggedIn')?? false;
 
-  // if(entrypoint && !isLoggedIn){ //TODO confirm if it is & or &&
+  // if(entrypoint && !isLoggedIn){
   //   defaultHome = const Login();
   // } else if(entrypoint && isLoggedIn) {
   //   defaultHome = const MainScreen();
   // }
+  //
 
   runApp(
       MultiProvider(
@@ -40,8 +41,6 @@ void main() async{
             ChangeNotifierProvider(create: (context) => ZoomNotifier()),
             ChangeNotifierProvider(create: (context) => ChatNotifier()),
             ChangeNotifierProvider(create: (context) => ProfileNotifier()),
-
-
           ],
           child: const MyApp(),
       ),
@@ -50,8 +49,6 @@ void main() async{
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
-
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return ScreenUtilInit(
